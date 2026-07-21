@@ -2,17 +2,15 @@ class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
         stack<int> st;
-
         for (string token : tokens) {
             if (token == "+" || token == "-" ||
                 token == "*" || token == "/") {
 
                 int b = st.top();
-                st.pop();
 
+                st.pop();
                 int a = st.top();
                 st.pop();
-
                 if (token == "+")
                     st.push(a + b);
                 else if (token == "-")
@@ -21,10 +19,13 @@ public:
                     st.push(a * b);
                 else
                     st.push(a / b);
+
             }
+
             else {
-                st.push(stoi(token));
+                st.push(stoi(token));// stoi(token) to convert a numeric string to an integer.
             }
+
         }
 
         return st.top();
